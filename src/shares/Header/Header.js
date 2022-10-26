@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,7 +9,18 @@ import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const logOutHandler = () => {
+        logOut()
+            .then(() => { })
+            .catch(e => {
+                console.error(e)
+
+            })
+    }
+
+
 
     return (
         <div className=''>
@@ -23,9 +36,27 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets">More deets</Nav.Link>
+                            {
+                                user?.uid
+                                    ?
+                                    <Button variant="outline-light" onClick={logOutHandler}>Logout</Button>
+                                    :
+                                    <>
+                                        <Link to='/login'><Button variant="outline-light">Login</Button></Link>
+                                        <Link to='/register'><Button className='ms-3' variant="outline-light">Register</Button></Link>
+                                    </>
+                            }
+
+                            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
-                                {user?.email}
+                                {
+                                    user?.uid
+                                        ? <Image roundedCircle
+                                            style={{ width: '30px', height: '30px' }}
+                                            src={user?.photoURL} alt="" />
+                                        :
+                                        <p>no user founded</p>
+                                }
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

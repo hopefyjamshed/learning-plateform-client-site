@@ -8,6 +8,7 @@ const SingleCart = () => {
     console.log(category)
     return (
         <div className='mt-5'>
+            <Link to='/checkout'><Button className='mb-3' variant="outline-dark">Premium Access</Button></Link>
 
             <Card className=''>
                 <Card.Body>

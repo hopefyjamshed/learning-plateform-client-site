@@ -6,9 +6,11 @@ import Card from 'react-bootstrap/Card';
 import img from '../../tools/images/login.jpg.crdownload'
 import { AuthContext } from '../../shares/context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Login = () => {
+    const [error, setError] = useState('')
     const { login } = useContext(AuthContext)
     const loginHandler = (event) => {
         event.preventDefault()
@@ -19,8 +21,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                form.reset()
+                setError('')
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                setError(error.message)
+                console.error(error)
+            })
     }
     return (
         <div className='mt-5'>
@@ -51,6 +58,7 @@ const Login = () => {
                             <p>don't have an account?<Link to='/register'>Signup for free</Link></p>
                         </Form>
                     </Card.Text>
+                    <p className='bg-warning rounded p-2 text-danger'>{error}</p>
                 </Card.Body>
             </Card>
         </div>

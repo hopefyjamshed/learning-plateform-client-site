@@ -3,12 +3,16 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../shares/context/AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('')
-    const { registration, userName } = useContext(AuthContext)
+    const { registration,
+        userName,
+        varifyEmail,
+        logOut } = useContext(AuthContext)
     const registerHandler = (event) => {
         event.preventDefault()
         const form = event.target
@@ -21,11 +25,19 @@ const Register = () => {
                 const user = result.user
                 console.log(user)
                 profileHandler(name, photo)
+                form.reset()
+
+                setError('')
+
+                emailvarificationHandler()
+                toast.success('your varification email is successfully sent!')
+
             })
             .catch(error => {
                 console.log(error)
                 setError(error.message)
             });
+
 
     }
     const profileHandler = (name, photo) => {
@@ -35,9 +47,25 @@ const Register = () => {
         }
         userName(profile)
             .then(() => { })
-            .catch(e => console.error(e))
+            .catch(e => {
+                console.error(e)
+                setError(e.message)
+            })
         userName(name)
     }
+    const emailvarificationHandler = () => {
+        varifyEmail()
+            .then(() => {
+
+            })
+            .catch(err => {
+                console.error(err)
+
+                setError(err)
+            })
+    }
+
+
 
     return (
         <div className='mt-5'>

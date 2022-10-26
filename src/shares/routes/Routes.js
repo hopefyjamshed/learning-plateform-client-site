@@ -3,6 +3,7 @@ import Main from "../../layout/Main";
 import Blog from "../../pages/blog/Blog";
 import Checkout from "../../pages/checkout/Checkout";
 import Courses from "../../pages/courses/Courses";
+import ErrorPage from "../../pages/error/ErrorPage";
 import Faq from "../../pages/faq/Faq";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
@@ -50,7 +51,12 @@ export const router = createBrowserRouter([
                 path: '/checkout',
                 element: <PrivateRouter>
                     <Checkout></Checkout>
-                </PrivateRouter>
+                </PrivateRouter>,
+                loader: () => fetch('https://learning-platform-server-xi.vercel.app/courses')
+            },
+            {
+                path: '/*',
+                element: <ErrorPage></ErrorPage>
             }
         ]
     }

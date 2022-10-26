@@ -1,9 +1,18 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import PremiumData from '../../shares/premium/PremiumData';
 
 const Checkout = () => {
+    const courses = useLoaderData()
+
     return (
         <div>
-            <h1>this is checkout</h1>
+            {
+                courses.map(course => <PremiumData
+                    key={course.id}
+                    course={course}
+                ></PremiumData>)
+            }
         </div>
     );
 };

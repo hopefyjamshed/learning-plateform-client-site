@@ -3,6 +3,8 @@ import Main from "../../layout/Main";
 import Blog from "../../pages/blog/Blog";
 import Courses from "../../pages/courses/Courses";
 import Faq from "../../pages/faq/Faq";
+import Login from "../../pages/login/Login";
+import Register from "../../pages/register/Register";
 import SingleCart from "../../pages/singleCart/SingleCart";
 import Leftpage from "../left/Leftpage";
 
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
                 path: '/single/:id',
                 element: <SingleCart></SingleCart>,
                 loader: ({ params }) => fetch(`https://learning-platform-server-xi.vercel.app/category/${params.id}`)
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }

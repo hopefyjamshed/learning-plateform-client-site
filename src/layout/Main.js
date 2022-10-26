@@ -1,10 +1,23 @@
 import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
+import Header from '../shares/Header/Header';
+import Leftpage from '../shares/left/Leftpage';
 
 const Main = () => {
     return (
         <div>
-            <h1>this is main </h1>
-            <h1>hey buddy</h1>
+            <Header></Header>
+            <Container>
+                <Row>
+                    <Col lg='3'>
+                        <Leftpage></Leftpage>
+                    </Col>
+                    <Col lg='9'>
+                        <Outlet></Outlet>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };

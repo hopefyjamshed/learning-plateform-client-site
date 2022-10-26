@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { Button, Image } from 'react-bootstrap';
+import { Button, Image, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 
+
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+
 
     const logOutHandler = () => {
         logOut()
@@ -47,16 +51,26 @@ const Header = () => {
                                     </>
                             }
 
-                            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+                            <Nav.Link href="#deets"></Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
                                 {
                                     user?.uid
-                                        ? <Image roundedCircle
+                                        ? <Image title={user?.displayName} roundedCircle
                                             style={{ width: '30px', height: '30px' }}
                                             src={user?.photoURL} alt="" />
                                         :
-                                        <p>no user founded</p>
+                                        <></>
                                 }
+                                {/* dark light button group  */}
+                                <ToggleButtonGroup className='ms-3' type="radio" name="options" defaultValue={1}>
+
+                                    <ToggleButton variant="light" id="tbg-radio-2" value={2}>
+                                        light mode
+                                    </ToggleButton>
+                                    <ToggleButton variant='dark' id="tbg-radio-3" value={3}>
+                                        Dark mode
+                                    </ToggleButton>
+                                </ToggleButtonGroup>
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>

@@ -14,9 +14,9 @@ const SingleCart = () => {
                     <Card.Text>
                         {category.details}
                     </Card.Text>
-                    <Link to='/'><Button variant="outline-dark">Dark</Button></Link>
+                    <Link to='/'><Button variant="outline-dark">Go to courses</Button></Link>
                 </Card.Body>
-                <Card.Img className='img img-fluid' variant="bottom" src={category.imageURl} />
+                <Card.Img style={{ widht: '100%', height: '300px' }} className='img img-fluid' variant="bottom" src={category.imageURl} />
             </Card>
         </div>
     );

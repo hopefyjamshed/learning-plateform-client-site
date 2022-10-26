@@ -7,7 +7,7 @@ const CoursesCart = ({ course }) => {
     return (
         <div>
             <Card className="bg-dark text-white mt-3">
-                <Card.Img src={imageURl} alt="Card image" />
+                <Card.Img style={{ width: '100%', height: '400px' }} src={imageURl} alt="Card image" />
                 <Card.ImgOverlay>
                     <Card.Title className='text-5 text-danger'>{name}</Card.Title>
                     <Card.Text className='text-danger'>

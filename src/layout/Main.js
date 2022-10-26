@@ -10,7 +10,7 @@ const Main = () => {
             <Header></Header>
             <Container>
                 <Row>
-                    <Col lg='3'>
+                    <Col className='mt-5' lg='3'>
                         <Leftpage></Leftpage>
                     </Col>
                     <Col lg='9'>

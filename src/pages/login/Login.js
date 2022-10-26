@@ -5,13 +5,16 @@ import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import img from '../../tools/images/login.jpg.crdownload'
 import { AuthContext } from '../../shares/context/AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
 const Login = () => {
+    const navigate = useNavigate()
     const [error, setError] = useState('')
     const { login } = useContext(AuthContext)
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
     const loginHandler = (event) => {
         event.preventDefault()
         const form = event.target
@@ -23,6 +26,7 @@ const Login = () => {
                 console.log(user)
                 form.reset()
                 setError('')
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error.message)

@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
-import img from '../../tools/images/login.jpg.crdownload'
+import img from '../../tools/images/login.jpg'
 import { AuthContext } from '../../shares/context/AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';

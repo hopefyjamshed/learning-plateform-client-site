@@ -11,6 +11,7 @@ import { AuthContext } from '../context/AuthProvider/AuthProvider';
 
 
 
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
@@ -71,7 +72,9 @@ const Header = () => {
                                         Dark mode
                                     </ToggleButton>
                                 </ToggleButtonGroup>
+
                             </Nav.Link>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

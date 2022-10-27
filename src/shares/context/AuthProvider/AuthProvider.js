@@ -3,6 +3,20 @@ import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuth
 import app from '../../../firebase/firebase.config';
 import { createContext } from 'react';
 import { useState } from 'react';
+import './AuthProvider.css'
+
+
+// dark light toggler 
+export const themes = {
+    dark: "",
+    light: "white-content",
+};
+
+export const ThemeContext = createContext({
+    theme: themes.dark,
+    changeTheme: () => { },
+});
+// dark light toggler end 
 
 export const AuthContext = createContext()
 
